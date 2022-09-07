@@ -1,6 +1,6 @@
 
 destinations = ["Paris, France", "Shanghai, China", "Los Angeles, USA", "São Paulo, Brazil", "Cairo, Egypt"]
-test_traveler = ["Erin Wilkes", "Shanghai, China", ["historical sites", "art"]]
+test_traveler = ["Bruno Frylinck", "Shanghai, China", ["skyscraper", "zoo"]]
 
 # function to return the index of the destination
 def get_destination_index(destination):
@@ -60,3 +60,24 @@ def find_attraction(destination, interests):
 
 la_arts = find_attraction("Los Angeles, USA", ["art"])
 print(la_arts)
+
+
+# finally a function that determines what attraction a traveler would be interested in seeing
+def get_attractions_for_traveler(traveler):
+    traveler_destination = traveler[1]
+    traveler_interests = traveler[2]
+
+    traveler_attractions = find_attraction(traveler_destination, traveler_interests)
+
+    interests_string = "Hi " + traveler[0] + ", we think you'll like these places around " + traveler_destination + ": "
+
+    for attraction in traveler_attractions:
+        if attraction == traveler_attractions[-1]:
+            interests_string += "the " + attraction + "."
+        else:
+            interests_string += "the " + attraction + ", "
+
+
+    return interests_string
+
+print(get_attractions_for_traveler(test_traveler))
